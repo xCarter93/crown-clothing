@@ -3,8 +3,10 @@ import {
 	createAuthUserWithEmailAndPassword,
 	createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
+
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+
 import "./sign-up.styles.scss";
 
 const defaultFormFields = {
@@ -36,7 +38,6 @@ const SignUpForm = () => {
 				password
 			);
 			await createUserDocumentFromAuth(user, { displayName });
-			alert("Success!  You have signed up.");
 			resetFormFields();
 		} catch (error) {
 			if (error.code === "auth/email-already-in-use") {
@@ -46,8 +47,6 @@ const SignUpForm = () => {
 			}
 		}
 	};
-
-	// console.log(formFields);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
